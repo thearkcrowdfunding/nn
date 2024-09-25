@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image';
+
 interface HelpCardProps {
   title: string;
   imageSrc: string;
@@ -14,9 +16,14 @@ export function HelpCardComponent({ title, imageSrc, statistic1, statistic2, des
       <h2 className="text-3xl md:text-4xl font-bold mb-6">{title}</h2>
       
       <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 overflow-hidden">
-        <div className="aspect-w-16 aspect-h-9 md:aspect-h-7">
-          {/* Replace with actual image component */}
-          <img src={imageSrc} alt={title} className="object-cover w-full h-full" />
+        <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+          <Image
+            src={imageSrc}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
       </div>
       
