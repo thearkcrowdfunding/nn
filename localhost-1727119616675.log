@@ -1,0 +1,29 @@
+chunk-6BKLQ22S.js?v=759f497a:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+v3:1 You may test your Stripe.js integration over HTTP. However, live Stripe.js integrations must use HTTPS.
+value @ v3:1
+e @ v3:1
+ou @ v3:1
+initStripe2 @ @stripe_stripe-js.js?v=759f497a:103
+(anonymous) @ @stripe_stripe-js.js?v=759f497a:133
+Promise.then
+loadStripe2 @ @stripe_stripe-js.js?v=759f497a:132
+(anonymous) @ App.tsx:10
+Show 3 more frames
+Show less
+js.stripe.com/v3/elements-inner-card-5c35911b100a675ef765a3f9a92906bc.html#wait=false&mids[guid]=NA&mids[muid]=1dab47bc-c857-42d0-b366-4164fd5d6184e2a55f&mids[sid]=d8cd152d-44ed-4842-98f1-1a2c78756575aa0f63&hidePostalCode=true&rtl=false&componentName=card&keyMode=test&apiKey=pk_test_51Puser01AoyUoeVtKss0QYabiq4gO0ErvljxQh1H6WKSDptq0i2ZGAqRXw5T4eyIoPBbCXqAXRLBkVReDjtjOukx00TkhM3Agk&referrer=http%3A%2F%2Flocalhost%3A5173%2F&controllerId=__privateStripeController8321:1 Blocked aria-hidden on a <input> element because the element that just received focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden. <input class=​"InputElement is-empty Input Input--empty" autocomplete=​"cc-exp" autocorrect=​"off" spellcheck=​"false" type=​"text" name=​"exp-date" data-elements-stable-field-name=​"cardExpiry" inputmode=​"numeric" aria-label=​"Credit or debit card expiration date" placeholder=​"MM /​ YY" aria-invalid=​"false" tabindex=​"0" value>​
+donation-form.tsx:45 PaymentMethod created: {id: 'pm_1Q2Ht501AoyUoeVtz1gjii8u', object: 'payment_method', allow_redisplay: 'unspecified', billing_details: {…}, card: {…}, …}
+donation-form.tsx:64 Client Secret received: pi_3Q2Ht701AoyUoeVt1HXHJtwo_secret_7p5cLaogUhUlb9J1GvnE09zlW
+donation-form.tsx:65 Subscription ID received: sub_1Q2Ht801AoyUoeVttPPGEi2v
+donation-form.tsx:68 Subscription created successfully
+donation-form.tsx:45 PaymentMethod created: {id: 'pm_1Q2HtG01AoyUoeVtsEC8VH3H', object: 'payment_method', allow_redisplay: 'unspecified', billing_details: {…}, card: {…}, …}
+donation-form.tsx:64 Client Secret received: pi_3Q2HtH01AoyUoeVt0CylgEQP_secret_JXZL2nfERRlHRs6zTlVunXefL
+donation-form.tsx:65 Subscription ID received: sub_1Q2HtI01AoyUoeVtzWF8oom1
+donation-form.tsx:68 Subscription created successfully
+donation-form.tsx:45 PaymentMethod created: {id: 'pm_1Q2HtN01AoyUoeVtUhCriNUS', object: 'payment_method', allow_redisplay: 'unspecified', billing_details: {…}, card: {…}, …}
+donation-form.tsx:64 Client Secret received: pi_3Q2HtO01AoyUoeVt0HeiFkzA_secret_LcXdo1xkoKJU9LuZaGEonfoOe
+donation-form.tsx:65 Subscription ID received: sub_1Q2HtP01AoyUoeVtT9A0rcyc
+donation-form.tsx:68 Subscription created successfully
+donation-form.tsx:45 PaymentMethod created: {id: 'pm_1Q2HtW01AoyUoeVtjRiz2Hc9', object: 'payment_method', allow_redisplay: 'unspecified', billing_details: {…}, card: {…}, …}
+donation-form.tsx:64 Client Secret received: pi_3Q2HtX01AoyUoeVt0hUTbzOs_secret_quIciexEdRy9AbTwavV5HcDCc
+donation-form.tsx:65 Subscription ID received: sub_1Q2HtY01AoyUoeVtjc99AWnZ
+donation-form.tsx:68 Subscription created successfully
