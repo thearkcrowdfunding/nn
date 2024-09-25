@@ -1,16 +1,16 @@
 export const testimonials = [
   {
-    imageSrc: "/images/testimonials/testimonial1.jpg",
+    imageSrc: "/testimonials/testimonial1.jpg",
     quote: "Благодаря поддержке Насилию.Нет я смогла начать новую жизнь. Их помощь была неоценима в самый трудный период моей жизни.",
     author: "Анна, 34 года"
   },
   {
-    imageSrc: "/images/testimonials/testimonial2.jpg",
+    imageSrc: "/testimonials/testimonial2.jpg",
     quote: "Психологическая поддержка, которую я получила, помогла мне восстановить веру в себя и свои силы. Я благодарна за эту возможность.",
     author: "Мария, 28 лет"
   },
   {
-    imageSrc: "/images/testimonials/testimonial3.jpg",
+    imageSrc: "/testimonials/testimonial3.jpg",
     quote: "Благодаря поддержке центра я смогла выбраться из ужасной ситуации и начать новую жизнь. Я бесконечно благодарна за их помощь и поддержку.",
     author: "Елена, 29 лет"
   }
