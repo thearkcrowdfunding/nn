@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 export function HeroComponent() {
   return (
-    <div className="h-[600px] md:h-[800px] flex flex-col justify-center p-6 bg-gradient-to-br from-gray-900 to-gray-700 text-white font-sans">
-      <div className="max-w-2xl">
+    <div className="h-[600px] md:h-[800px] flex flex-col justify-center items-center p-6 bg-gradient-to-br from-gray-900 to-gray-700 text-white font-sans">
+      <div className="max-w-[800px] w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-left leading-tight">
           ПОМОГИТЕ ЖЕНЩИНАМ, СТРАДАЮЩИМ ОТ ДОМАШНЕГО НАСИЛИЯ
         </h1>
