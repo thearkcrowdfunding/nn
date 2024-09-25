@@ -3,20 +3,25 @@
 import Image from 'next/image'
 
 interface TestimonialCardProps {
-  imageSrc: string;
-  quote: string;
-  author: string;
+  testimonial: {
+    imageSrc: string;
+    quote: string;
+    author: string;
+  }
 }
 
-export function TestimonialCard({ imageSrc, quote, author }: TestimonialCardProps) {
+export function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const { imageSrc, quote, author } = testimonial;
+
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-[800px] w-full mx-auto" style={{ minHeight: '600px' }}>
       <div className="relative h-full">
         <Image
           src={imageSrc}
           alt={author}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 800px) 100vw, 800px"
+          style={{ objectFit: 'cover' }}
           priority
         />
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-6 md:p-10">

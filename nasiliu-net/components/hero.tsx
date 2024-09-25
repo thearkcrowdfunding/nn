@@ -1,11 +1,20 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function HeroComponent() {
   return (
-    <div className="h-[600px] md:h-[800px] flex flex-col justify-center items-center p-6 bg-gradient-to-br from-gray-900 to-gray-700 text-white font-sans">
-      <div className="max-w-[800px] w-full">
+    <div className="relative h-[600px] md:h-[800px] flex flex-col justify-center items-center p-6 text-white font-sans">
+      <Image
+        src="/images/hero/hero-background.jpg"
+        alt="Background"
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-black opacity-60"></div>
+      <div className="relative z-10 max-w-[800px] w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-left leading-tight">
           ПОМОГИТЕ ЖЕНЩИНАМ, СТРАДАЮЩИМ ОТ ДОМАШНЕГО НАСИЛИЯ
         </h1>

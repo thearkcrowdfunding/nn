@@ -1,6 +1,7 @@
 'use client'
 
 import { TestimonialCard } from './testimonial-card'
+import { testimonials } from '../data/testimonials'
 
 export function CtaComponent() {
   return (
@@ -23,11 +24,7 @@ export function CtaComponent() {
           <p className="text-2xl md:text-3xl font-bold">Им нужна ваша помощь!</p>
         </div>
       </div>
-      <TestimonialCard 
-        imageSrc="/path/to/testimonial3.jpg"
-        quote="Благодаря поддержке центра я смогла выбраться из ужасной ситуации и начать новую жизнь. Я бесконечно благодарна за их помощь и поддержку."
-        author="Елена, 29 лет"
-      />
+      <TestimonialCard testimonial={testimonials[2]} />
     </div>
   )
 }
