@@ -1,10 +1,11 @@
 'use client'
 
+import { TestimonialCard } from './testimonial-card'
+
 export function CtaComponent() {
-  // The content of this function remains the same as in the original StatisticsCardComponent
   return (
-    <div className="h-[600px] md:h-[800px] flex items-center justify-center bg-gradient-to-r from-red-600 to-red-800 p-4 md:p-8">
-      <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-[800px] w-full">
+    <div className="flex flex-col items-center bg-gradient-to-r from-red-600 to-red-800 py-12 px-4 md:px-8">
+      <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-[800px] w-full mb-8"> {/* Changed mb-12 to mb-8 */}
         <div className="text-left">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Сотни тысяч женщин</h2>
           <p className="text-base md:text-lg mb-4">
@@ -22,6 +23,11 @@ export function CtaComponent() {
           <p className="text-2xl md:text-3xl font-bold">Им нужна ваша помощь!</p>
         </div>
       </div>
+      <TestimonialCard 
+        imageSrc="/path/to/testimonial3.jpg"
+        quote="Благодаря поддержке центра я смогла выбраться из ужасной ситуации и начать новую жизнь. Я бесконечно благодарна за их помощь и поддержку."
+        author="Елена, 29 лет"
+      />
     </div>
   )
 }

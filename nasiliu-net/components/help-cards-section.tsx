@@ -37,10 +37,6 @@ export function HelpCardsSection() {
           <HelpCardComponent key={index} {...cardData} />
         ))}
       </div>
-      <p className="text-4xl md:text-5xl text-white text-center mt-12">
-        А также HR-поддержка,<br />
-        сопровождение,<br />инструкции для пострадавших<br />и многое другое
-      </p>
     </div>
   )
 }

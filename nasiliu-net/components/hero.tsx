@@ -12,11 +12,11 @@ export function HeroComponent() {
         <p className="text-lg mb-8 text-left">
           Получить экстренное убежище, психологическую помощь, комплексное сопровождение и вырваться из замкнутого круга
         </p>
-        <button className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 text-lg md:text-xl">
+        <button className="w-full md:w-[400px] bg-red-600 hover:bg-red-700 text-white font-bold py-3 md:py-4 rounded-full transition duration-300 text-lg md:text-xl">
           <span className="block text-center">Помочь сейчас!</span>
         </button>
         <div className="mt-4">
-          <Link href="#" className="text-sm underline">
+          <Link href="#" className="text-lg underline">
             Узнать больше
           </Link>
         </div>
