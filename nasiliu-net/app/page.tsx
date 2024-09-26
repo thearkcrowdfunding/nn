@@ -12,6 +12,15 @@ import { DonationFormWithCta } from '../components/donation-form-with-cta'
 export default function Home() {
   console.log('Testimonials:', testimonials);
 
+  const urgentCtaText = `ЧТОБЫ ОКАЗЫВАТЬ ЭКСТРЕННУЮ ПОМОЩЬ <br />
+    И СПАСАТЬ ЛЮДЕЙ, <br />
+    НАМ НУЖНА ВАША ПОМОЩЬ 
+    <br /> <br /> ДАЖЕ $10 <br />ИЗМЕНЯТ ЧЬЮ-ТО ЖИЗНЬ`;
+
+  const defaultCtaText = `НЕ ПРОХОДИТЕ МИМО ТЕХ<br />
+    КТО ОТЧАЯННО НУЖДАЕТСЯ<br />
+    В ПОМОЩИ`;
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
       <NonprofitNavComponent />
@@ -39,12 +48,12 @@ export default function Home() {
         </div>
       </div>
       <div className="max-w-4xl mx-auto">
-        <DonationFormWithCta showCTA={true} />
+        <DonationFormWithCta showCTA={true} ctaText={urgentCtaText} />
       </div>
       <StatisticsComponent />
       <Team />
       <div className="max-w-4xl mx-auto">
-        <DonationFormWithCta showCTA={true} />
+        <DonationFormWithCta showCTA={true} ctaText={defaultCtaText} />
       </div>
     </div>
   );
