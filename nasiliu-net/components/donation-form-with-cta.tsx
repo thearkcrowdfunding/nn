@@ -8,11 +8,21 @@ interface DonationFormProps {
   ctaText?: string;
 }
 
+const paymentLinks = {
+  '10': 'https://buy.stripe.com/test_00geVC122fOC7S0eUU',
+  '15': 'https://buy.stripe.com/test_14k5l2dOO0TI7S0cMN',
+  '25': 'https://buy.stripe.com/test_8wM6p6bGG0TIfkscMO'
+};
+
 export function DonationFormWithCta({ showCTA = false, ctaText }: DonationFormProps) {
   const [amount, setAmount] = useState<string>('15')
 
   const handleAmountClick = (value: string) => {
     setAmount(value)
+  }
+
+  const handleDonateClick = () => {
+    window.open(paymentLinks[amount as keyof typeof paymentLinks], '_blank')
   }
 
   return (
@@ -33,7 +43,7 @@ export function DonationFormWithCta({ showCTA = false, ctaText }: DonationFormPr
           Без вашей помощи они не справятся
         </p>
         <div className="grid grid-cols-3 gap-4 mb-6">
-          {['10', '15', '25'].map((value) => (
+          {Object.keys(paymentLinks).map((value) => (
             <Button
               key={value}
               variant={amount === value ? "default" : "outline"}
@@ -50,7 +60,7 @@ export function DonationFormWithCta({ showCTA = false, ctaText }: DonationFormPr
         </div>
         <Button 
           className="w-full bg-red-500 hover:bg-red-600 text-white mb-4 text-lg py-3 rounded-md"
-          onClick={() => console.log(`Donating $${amount}`)}
+          onClick={handleDonateClick}
         >
           Помочь сейчас!
         </Button>
