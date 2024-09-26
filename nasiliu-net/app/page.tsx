@@ -38,13 +38,10 @@ export default function Home() {
             <HelpCardComponent {...helpCardsData[0]} />
             <TestimonialCard testimonial={testimonials[0]} />
             <HelpCardComponent {...helpCardsData[1]} />
-            <TestimonialCard testimonial={testimonials[1]} />
             <HelpCardComponent {...helpCardsData[2]} />
+            <TestimonialCard testimonial={testimonials[1]} />
+            <HelpCardComponent {...helpCardsData[3]} />
           </div>
-          <p className="text-4xl md:text-5xl text-white text-left mt-12">
-            А также HR-поддержка,<br />
-            сопровождение,<br />инструкции для пострадавших<br />и многое другое
-          </p>
         </div>
       </div>
       <div className="max-w-4xl mx-auto">
