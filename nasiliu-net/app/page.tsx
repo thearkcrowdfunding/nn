@@ -7,7 +7,7 @@ import { StatisticsComponent } from '../components/statistics'
 import { Team } from '../components/team'
 import { testimonials } from '../data/testimonials'
 import { helpCardsData } from '../data/helpCardsData'
-
+import { DonationFormWithCta } from '../components/donation-form-with-cta'
 export default function Home() {
   console.log('Testimonials:', testimonials);
 
@@ -16,6 +16,7 @@ export default function Home() {
       <NonprofitNavComponent />
       <HeroComponent />
       <CtaComponent />
+      <DonationFormWithCta />
       <div className="bg-black py-12 px-4 md:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-8 uppercase">
           Как помогает Насилию.Нет
@@ -32,8 +33,10 @@ export default function Home() {
           сопровождение,<br />инструкции для пострадавших<br />и многое другое
         </p>
       </div>
+      <DonationFormWithCta />
       <StatisticsComponent />
       <Team />
+      <DonationFormWithCta />
     </div>
   );
 }
