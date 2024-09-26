@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Link as ScrollLink } from "react-scroll";
 
 export function NonprofitNavComponent() {
   const [isOpen, setIsOpen] = useState(false)
@@ -14,6 +13,13 @@ export function NonprofitNavComponent() {
     { name: "О нас", href: "https://nasiliu.net/o-nas/" },
     { name: "Отчеты", href: "https://nasiliu.net/report/" },
   ]
+
+  const handleDonateClick = () => {
+    const donateSection = document.getElementById('donate-now');
+    if (donateSection) {
+      donateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="bg-transparent w-full absolute top-0 z-50">
@@ -36,14 +42,12 @@ export function NonprofitNavComponent() {
             ))}
           </div>
           <div className="flex items-center space-x-4">
-            <ScrollLink 
-              to="donation-form" 
-              smooth={true} 
-              duration={500} 
+            <button 
+              onClick={handleDonateClick}
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 text-base md:text-lg cursor-pointer"
             >
               Помочь
-            </ScrollLink>
+            </button>
             <div className="md:hidden">
               <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="text-white">
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

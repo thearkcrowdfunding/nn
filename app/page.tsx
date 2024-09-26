@@ -25,8 +25,10 @@ export default function Home() {
     <div className="font-[family-name:var(--font-geist-sans)]">
       <NonprofitNavComponent />
       <HeroComponent />
-      <CtaComponent />
-      <div className="max-w-4xl mx-auto">
+      <div id="learn-more">
+        <CtaComponent />
+      </div>
+      <div id="donate-now" className="max-w-4xl mx-auto">
         <DonationFormWithCta />
       </div>
       <div className="bg-black py-12 px-4 md:px-8">
