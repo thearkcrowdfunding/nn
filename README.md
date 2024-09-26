@@ -1,3 +1,24 @@
+Replace the URLs with your new Stripe payment links for each donation amount in `components/donatation-form-with-cta.tsx`
+
+### Managing Images
+
+Images are stored in the `/public/images/` directory and are referenced in various files:
+
+1. Hero background: `/public/images/hero/hero-background.jpg`
+   - Used in `components/hero.tsx`
+
+2. Help card images: `/public/images/help-cards/`
+   - Referenced in `data/helpCardsData.ts`
+
+3. Testimonial images: `/public/images/testimonials/`
+   - Referenced in `data/testimonials.ts`
+
+To change an image, replace the file in the appropriate directory while keeping the same filename, or update the `imageSrc` in the corresponding data file.
+
+[Existing content continues]
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -14,8 +14,8 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const { imageSrc, quote, author } = testimonial;
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-[800px] w-full mx-auto" style={{ minHeight: '600px' }}>
-      <div className="relative h-full">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-[800px] w-full mx-auto">
+      <div className="relative aspect-[4/3]">
         <Image
           src={imageSrc}
           alt={author}
@@ -24,7 +24,8 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
           style={{ objectFit: 'cover' }}
           priority
         />
-        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-6 md:p-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 text-white p-6 md:p-10">
           <blockquote className="text-xl md:text-2xl mb-4">&ldquo;{quote}&rdquo;</blockquote>
           <p className="text-lg md:text-xl font-semibold">{author}</p>
         </div>
