@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export function Team() {
   const teamMembers = [
-    { name: 'Анна Ривина', role: 'основательница НН', image: '/placeholder.svg' },
-    { name: 'Анна Ривина', role: 'основательница НН', image: '/placeholder.svg' },
-    { name: 'Анна Ривина', role: 'основательница НН', image: '/placeholder.svg' },
+    { name: 'Анна Ривина', role: 'основательница Насилию.нет', image: '/images/team/anna_rivina_09-282x282.jpg' },
+    { name: 'Екатерина Прохорова', role: 'руководитель Центра?', image: '/images/team/ekaterina-prohorova_koordinator-adresnoj-pomoshhi-282x282.jpg' },
+    { name: 'Светлана Губенко', role: 'директор Центра', image: '/images/team/svetlana-gubenko-e1638786403979-282x282.jpeg' },
   ];
 
   return (
@@ -31,7 +31,7 @@ export function Team() {
         ))}
       </div>
       <p className="mt-8 text-gray-700 text-lg">
-        И еще 12 человек, которые работают постоянно
+        И еще <strong>12 человек,</strong> которые работают постоянно
       </p>
     </div>
   )
