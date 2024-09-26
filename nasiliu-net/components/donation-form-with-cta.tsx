@@ -15,7 +15,7 @@ export function DonationFormWithCta({ showCTA = false }: DonationFormProps) {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-6">
+    <div className="w-full max-w-4xl mx-auto p-6">
       {showCTA && (
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
           НЕ ПРОХОДИТЕ МИМО ТЕХ<br />
