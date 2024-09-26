@@ -18,22 +18,19 @@ export function DonationFormWithCta({ showCTA = false, ctaText }: DonationFormPr
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
       {showCTA && ctaText && (
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center" dangerouslySetInnerHTML={{ __html: ctaText }}></h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: ctaText }}></h2>
       )}
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <h3 className="text-xl md:text-2xl font-bold mb-4">
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h3 className="text-xl md:text-2xl font-bold mb-4 text-left">
           ПОМОГИТЕ ЖЕРТВАМ ДОМАШНЕГО НАСИЛИЯ
         </h3>
-        <p className="text-gray-600 mb-4">
-          Без вашей помощи они не справятся
+        <p className="text-gray-600 mb-4 text-left">
+         Получить экстренное убежище, <br />психологическую помощь, <br />комплексное сопровождение<br />и вырваться из замкнутого круга
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text-left">
           Подпишитесь на <span className="font-bold">ежемесячные</span> пожертвования
-        </p>
-        <p className="mb-6">
-          Чтобы НН могло помогать им так так и так<br />
-          и так<br />
-          и так
+          <br /> <br />
+          Без вашей помощи они не справятся
         </p>
         <div className="grid grid-cols-3 gap-4 mb-6">
           {['10', '15', '25'].map((value) => (
@@ -57,7 +54,7 @@ export function DonationFormWithCta({ showCTA = false, ctaText }: DonationFormPr
         >
           Помочь сейчас!
         </Button>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-500 text-left">
           Нажимая кнопку, вы соглашаетесь с условиями обработки данных и подтверждаете добровольное пожертвование в НН (в общем, текст короче и все лигалы увести в ссылки)
         </p>
       </div>
