@@ -29,7 +29,7 @@ export default function Home() {
         <CtaComponent />
       </div>
       <div className="py-8 px-4 md:px-8">
-        <TestimonialCard testimonial={testimonials[2]} />
+        <TestimonialCard testimonial={testimonials[1]} />
       </div>
       <div id="donate-now" className="max-w-[800px] mx-auto px-6 py-12">
         <DonationForm />
@@ -45,7 +45,7 @@ export default function Home() {
             <TestimonialCard testimonial={testimonials[0]} />
             <HelpCardComponent {...helpCardsData[1]} />
             <HelpCardComponent {...helpCardsData[2]} />
-            <TestimonialCard testimonial={testimonials[1]} />
+            <TestimonialCard testimonial={testimonials[2]} />
             <HelpCardComponent {...helpCardsData[3]} />
           </div>
         </div>
