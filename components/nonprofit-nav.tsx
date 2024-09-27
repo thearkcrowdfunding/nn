@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -27,7 +28,15 @@ export function NonprofitNavComponent() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-white">
-              Логотип
+              <div style={{ width: '120px', height: '40px', position: 'relative' }}>
+                <Image
+                  src="https://nasiliu.net/wp-content/themes/nasiliunet/img/logo-new.svg"
+                  alt="Насилию.нет Logo"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </Link>
           </div>
           <div className="hidden md:flex items-center justify-center flex-1 space-x-8">
@@ -44,7 +53,7 @@ export function NonprofitNavComponent() {
           <div className="flex items-center space-x-4">
             <button 
               onClick={handleDonateClick}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 text-base md:text-lg cursor-pointer"
+              className="hidden md:block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 text-base md:text-lg cursor-pointer"
             >
               Помочь
             </button>

@@ -14,8 +14,8 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const { imageSrc, quote, author } = testimonial;
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-[800px] w-full mx-auto">
-      <div className="relative aspect-[4/3]">
+    <div className="bg-white rounded-2xl overflow-hidden max-w-[800px] w-full mx-auto">
+      <div className="relative w-full pb-[150%] md:pb-[75%]"> {/* 2:3 aspect ratio for mobile, 4:3 for larger screens */}
         <Image
           src={imageSrc}
           alt={author}

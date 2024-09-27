@@ -4,13 +4,13 @@ import Image from 'next/image';
 
 export function Team() {
   const teamMembers = [
-    { name: 'Анна Ривина', role: 'основательница Насилию.нет', image: '/images/team/anna_rivina_09-282x282.jpg' },
-    { name: 'Екатерина Прохорова', role: 'руководитель Центра?', image: '/images/team/ekaterina-prohorova_koordinator-adresnoj-pomoshhi-282x282.jpg' },
+    { name: 'Анна Ривина', role: 'основательница Центра Насилию.нет', image: '/images/team/anna_rivina_09-282x282.jpg' },
+    { name: 'Екатерина Прохорова', role: 'руководительница Центра', image: '/images/team/ekaterina-prohorova_koordinator-adresnoj-pomoshhi-282x282.jpg' },
     { name: 'Светлана Губенко', role: 'директор Центра', image: '/images/team/svetlana-gubenko-e1638786403979-282x282.jpeg' },
   ];
 
   return (
-    <div className="bg-white p-6 md:p-10 rounded-lg shadow-lg max-w-4xl mx-auto">
+    <div className="bg-white p-6 md:p-10 rounded-lg max-w-4xl mx-auto">
       <div className="space-y-8">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex items-center space-x-6">
@@ -31,7 +31,7 @@ export function Team() {
         ))}
       </div>
       <p className="mt-8 text-gray-700 text-lg">
-        И еще <strong>12 человек,</strong> которые работают постоянно
+        И еще <strong>21 человек,</strong> которые работают с нами постоянно
       </p>
     </div>
   )

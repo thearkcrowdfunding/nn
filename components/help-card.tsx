@@ -12,9 +12,10 @@ interface HelpCardProps {
 
 export function HelpCardComponent({ title, imageSrc, statistic1, statistic2, description }: HelpCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-[800px] w-full mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: title }}></h2>
-      
+    <div className="bg-white rounded-2xl p-6 md:p-10 max-w-[800px] w-full mx-auto">
+      <div className="p-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: title }}></h2>
+      </div>
       <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-6 overflow-hidden">
         <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
           <Image
