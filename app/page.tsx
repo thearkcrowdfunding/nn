@@ -8,6 +8,7 @@ import { Team } from '../components/team'
 import { testimonials } from '../data/testimonials'
 import { helpCardsData } from '../data/helpCardsData'
 import { DonationForm } from '../components/donation-form-with-cta'
+import { MediaMentionsComponent } from '../components/media-mentions'
 
 export default function Home() {
   console.log('Testimonials:', testimonials);
@@ -61,6 +62,7 @@ export default function Home() {
       <div className="max-w-[800px] mx-auto px-6 py-6">
         <StatisticsComponent />
       <Team />
+      <MediaMentionsComponent />
       </div>
       <div className="max-w-[800px] mx-auto px-6 py-6">
         <div className="p-4">
