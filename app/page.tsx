@@ -23,8 +23,10 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
-      <NonprofitNavComponent />
-      <HeroComponent />
+      <div className="relative">
+        <NonprofitNavComponent />
+        <HeroComponent />
+      </div>
       <div id="learn-more">
         <CtaComponent />
       </div>
