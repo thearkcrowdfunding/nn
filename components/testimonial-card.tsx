@@ -15,7 +15,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden max-w-[800px] w-full mx-auto">
-      <div className="relative w-full pb-[150%] md:pb-[75%]"> {/* 2:3 aspect ratio for mobile, 4:3 for larger screens */}
+      <div className="relative w-full pb-[150%] md:pb-[75%]">
         <Image
           src={imageSrc}
           alt={author}
@@ -25,8 +25,8 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 text-white p-6 md:p-10">
-          <blockquote className="text-xl md:text-2xl mb-4">&ldquo;{quote}&rdquo;</blockquote>
+        <div className="absolute bottom-0 left-0 right-0 text-white p-6 md:p-10 overflow-y-auto max-h-full">
+          <blockquote className="text-xl md:text-2xl mb-4 whitespace-pre-wrap">&ldquo;{quote}&rdquo;</blockquote>
           <p className="text-lg md:text-xl font-semibold">{author}</p>
         </div>
       </div>

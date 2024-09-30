@@ -9,6 +9,7 @@ import { testimonials } from '../data/testimonials'
 import { helpCardsData } from '../data/helpCardsData'
 import { DonationForm } from '../components/donation-form-with-cta'
 import { MediaMentionsComponent } from '../components/media-mentions'
+import { FooterComponent } from '../components/footer'  // Changed from Footer to FooterComponent
 
 export default function Home() {
   console.log('Testimonials:', testimonials);
@@ -70,6 +71,7 @@ export default function Home() {
         </div>
         <DonationForm />
       </div>
+      <FooterComponent /> 
     </div>
   );
 }
