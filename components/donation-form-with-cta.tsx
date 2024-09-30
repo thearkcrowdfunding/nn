@@ -24,7 +24,7 @@ export function DonationForm() {
   return (
     <div className="bg-white rounded-lg p-4 border-4 border-red-500 w-full"> {/* Added w-full */}
       <h3 className="text-3xl md:text-3xl font-bold mb-4 text-left text-red-500">
-        ПОМОГИТЕ ЖЕРТВАМ ДОМАШНЕГО НАСИЛИЯ
+        ПОМОГИТЕ ЖЕНЩИНАМ,<br />ПОСТРАДАВШИМ ОТ{"\u00A0"}ДОМАШНЕГО НАСИЛИЯ
       </h3>
       <p className="text-base mb-3 text-left">
         Получить экстренное убежище, психологическую помощь, комплексное сопровождение и{"\u00A0"}вырваться из{"\u00A0"}замкнутого круга

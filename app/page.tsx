@@ -44,7 +44,7 @@ export default function Home() {
             Как помогает Насилию.Нет
           </h2>
         </div>
-          <div className="flex flex-col gap-8 items-center">
+          <div className="flex flex-col gap-16 items-center"> {/* Increased gap */}
             <HelpCardComponent {...helpCardsData[0]} />
             <TestimonialCard testimonial={testimonials[0]} />
             <HelpCardComponent {...helpCardsData[1]} />

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useRef, useEffect, useState } from 'react'
 
 interface TestimonialCardProps {
   testimonial: {
@@ -12,10 +13,28 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const { imageSrc, quote, author } = testimonial;
+  const contentRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [cardHeight, setCardHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (contentRef.current && cardRef.current) {
+        const contentHeight = contentRef.current.scrollHeight;
+        const cardWidth = cardRef.current.offsetWidth;
+        const bottomPadding = cardWidth * 0.2; // 20% of card width
+        setCardHeight(contentHeight + bottomPadding);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [quote]);
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden max-w-[800px] w-full mx-auto">
-      <div className="relative w-full pb-[150%] md:pb-[75%]">
+    <div ref={cardRef} className="bg-white rounded-2xl overflow-hidden max-w-[800px] w-full mx-auto">
+      <div className="relative w-full" style={{ paddingBottom: `${cardHeight}px` }}>
         <Image
           src={imageSrc}
           alt={author}
@@ -25,9 +44,11 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 text-white p-6 md:p-10 overflow-y-auto max-h-full">
-          <blockquote className="text-xl md:text-2xl mb-4 whitespace-pre-wrap">&ldquo;{quote}&rdquo;</blockquote>
-          <p className="text-lg md:text-xl font-semibold">{author}</p>
+        <div className="absolute inset-0 flex flex-col justify-end text-white p-6 md:p-10">
+          <div ref={contentRef}>
+            <blockquote className="text-xl md:text-2xl mb-4 whitespace-pre-wrap">&ldquo;{quote}&rdquo;</blockquote>
+            <p className="text-lg md:text-xl font-semibold">{author}</p>
+          </div>
         </div>
       </div>
     </div>
