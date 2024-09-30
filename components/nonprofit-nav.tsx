@@ -33,8 +33,8 @@ export function NonprofitNavComponent() {
               <Link href="/" className="text-xl font-bold text-white">
                 <div style={{ width: '120px', height: '40px', position: 'relative' }}>
                   <Image
-                    src="https://nasiliu.net/wp-content/themes/nasiliunet/img/logo-new.svg"
-                    alt="Насилию.нет Logo"
+                    src="/logo-new.svg"
+                    alt="Насилию.нет"
                     fill
                     style={{ objectFit: 'contain' }}
                     priority
