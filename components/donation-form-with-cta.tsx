@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const paymentLinks = {
-  "10": "https://buy.stripe.com/test_00geVC122fOC7S0eUU",
-  "15": "https://buy.stripe.com/test_14k5l2dOO0TI7S0cMN",
-  "25": "https://buy.stripe.com/test_8wM6p6bGG0TIfkscMO"
+  "10": "https://buy.stripe.com/8wMaHe6R7bat5OM6oq",
+  "15": "https://buy.stripe.com/9AQ4iQ0sJguNdhe3cf",
+  "25": "https://buy.stripe.com/aEUeXu4IZfqJ90Y7sw"
 };
 
 export function DonationForm() {
