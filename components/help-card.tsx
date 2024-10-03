@@ -39,7 +39,7 @@ export function HelpCardComponent({ title, imageSrc, statistic1, statistic2, des
         </div>
       </div>
       
-      <p className="text-base md:text-lg text-left">{description}</p>
+      <p className="text-base md:text-lg text-left" dangerouslySetInnerHTML={{ __html: description }}></p>
     </div>
   )
 }

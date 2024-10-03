@@ -14,14 +14,7 @@ import { FooterComponent } from '../components/footer'  // Changed from Footer t
 export default function Home() {
   console.log('Testimonials:', testimonials);
 
-  const urgentCtaText = `ЧТОБЫ ОКАЗЫВАТЬ ЭКСТРЕННУЮ ПОМОЩЬ<br />
-    И СПАСАТЬ ЛЮДЕЙ,<br />
-    НАМ НУЖНА ВАША ПОДДЕРЖКА
-    <br /> <br /> ДАЖЕ $10 <br />ИЗМЕНЯТ ЧЬЮ-ТО ЖИЗНЬ`;
-
-  const defaultCtaText = `НЕ ПРОХОДИТЕ МИМО ТЕХ,<br />
-    КТО ОТЧАЯННО НУЖДАЕТСЯ<br />
-    В ПОМОЩИ`;
+  const urgentCtaText = `ЧТОБЫ ОКАЗЫВАТЬ ПОМОЩЬ<br />И СПАСАТЬ ЛЮДЕЙ — НУЖНА ВАША ПОДДЕРЖКА`;
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
@@ -41,7 +34,7 @@ export default function Home() {
       <div className="bg-black py-12 px-4 md:px-8">
         <div className="max-w-[800px] mx-auto">
         <div className="p-4"><h2 className="text-4xl md:text-5xl font-bold text-white text-left mb-8 uppercase">
-            Как помогает Насилию.Нет
+            Насилию.нет 6{"\u00A0"}лет помогает женщинам
           </h2>
         </div>
           <div className="flex flex-col gap-16 items-center"> {/* Increased gap */}
@@ -66,9 +59,6 @@ export default function Home() {
       <MediaMentionsComponent />
       </div>
       <div className="max-w-[800px] mx-auto px-6 py-6">
-        <div className="p-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: defaultCtaText }}></h2>
-        </div>
         <DonationForm />
       </div>
       <FooterComponent /> 

@@ -11,6 +11,7 @@ export function Team() {
 
   return (
     <div className="bg-white p-6 md:p-10 rounded-lg max-w-4xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8">ЗНАКОМЬТЕСЬ С КОМАНДОЙ</h2>
       <div className="space-y-8">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex items-center space-x-6">

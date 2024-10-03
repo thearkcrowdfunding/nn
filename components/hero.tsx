@@ -33,17 +33,21 @@ export function HeroComponent() {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-left leading-tight">
           ПОМОГИТЕ ЖЕНЩИНАМ, СТРАДАЮЩИМ ОТ{"\u00A0"}ДОМАШНЕГО НАСИЛИЯ
         </h1>
-        <p className="text-lg mb-8 text-left">
-          Получить экстренное убежище, психологическую помощь, комплексное сопровождение и{"\u00A0"}вырваться из{"\u00A0"}замкнутого круга
+        <p className="text-base md:text-lg mb-8 text-left">
+          Получить <strong className="font-extrabold">экстренное убежище,</strong> <strong className="font-extrabold">психологическую помощь,</strong> <strong className="font-extrabold">комплексное сопровождение</strong> и{"\u00A0"}вырваться из{"\u00A0"}замкнутого круга
         </p>
-        <button 
-          className="w-full md:w-[400px] bg-red-500 hover:bg-red-600 text-white font-bold py-3 md:py-4 rounded-full transition duration-300 text-lg md:text-xl"
-          onClick={handleDonateClick}
-        >
-          <span className="block text-center">Помочь сейчас!</span>
-        </button>
-        <div className="mt-4">
-          <Link href="#learn-more" className="text-lg underline" onClick={handleLearnMoreClick}>
+        <div className="flex flex-col md:flex-row md:items-center">
+          <button 
+            className="w-full md:w-auto md:flex-grow bg-red-500 hover:bg-red-600 text-white font-bold py-3 md:py-4 rounded-full transition duration-300 text-lg md:text-xl"
+            onClick={handleDonateClick}
+          >
+            <span className="block text-center">Помочь сейчас!</span>
+          </button>
+          <Link 
+            href="#learn-more" 
+            className="text-base md:text-lg underline mt-4 md:mt-0 md:ml-6 text-center md:text-left whitespace-nowrap" 
+            onClick={handleLearnMoreClick}
+          >
             Узнать больше
           </Link>
         </div>
