@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export function Team() {
   const teamMembers = [
-    { name: 'Анна Ривина', role: 'основательница Центра Насилию.нет', image: '/images/team/anna_rivina_09-282x282.jpg' },
-    { name: 'Екатерина Прохорова', role: 'руководительница Центра', image: '/images/team/ekaterina-prohorova_koordinator-adresnoj-pomoshhi-282x282.jpg' },
-    { name: 'Светлана Губенко', role: 'директор Центра', image: '/images/team/svetlana-gubenko-e1638786403979-282x282.jpeg' },
+    { name: 'Анна Ривина', role: 'основательница Центра Насилию.нет', image: '/images/team/anna_rivina_09-282x282.webp' },
+    { name: 'Екатерина Прохорова', role: 'руководительница Центра', image: '/images/team/ekaterina-prohorova_koordinator-adresnoj-pomoshhi-282x282.webp' },
+    { name: 'Светлана Губенко', role: 'директор Центра', image: '/images/team/svetlana-gubenko-e1638786403979-282x282.webp' },
   ];
 
   return (
