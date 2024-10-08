@@ -1,29 +1,29 @@
 export const helpCardsData = [
 	{
 	  title: "Экстренное убежище",
-	  imageSrc: "/images/help-cards/card3.jpg",
+	  imageSrc: "/images/help-cards/card3.webp",
 	  statistic1: { number: "378", text: "пострадавших<br />смогли укрыться" },
 	  statistic2: { number: ">100", text: "центров помощи по&nbsp;всей России,<br />верифицированных нами" },
 	  description: "Помогаем женщинам экстренно заселиться в&nbsp;безопасное место, укрыться от&nbsp;физического насилия, преследования или угроз, и&nbsp;продумать дальнейшие действия в&nbsp;спокойной обстановке."
 	},
 	{
 	  title: "Комплексное сопровождение",
-	  imageSrc: "/images/help-cards/card4.jpg",
-	  statistic1: { number: "XX XXX", text: "пострадавших<br />получили помощь" },
+	  imageSrc: "/images/help-cards/card4.webp",
+	  statistic1: { number: "12 352", text: "пострадавших<br />получили помощь" },
 	  statistic2: { number: "24", text: "специалистки<br />в&nbsp;нашей команде" },
 	  description: "Насилию.нет помогает пострадавшим, когда им&nbsp;страшно в&nbsp;одиночку пойти в&nbsp;полицию или травмпункт. Мы&nbsp;защищаем их&nbsp;права и&nbsp;учим защищать свои права. Оказываем HR-поддержку.<br /><br />У&nbsp;нас пострадавшая может не&nbsp;только переночевать, когда дома опасно, но&nbsp;и&nbsp;найти работу, годами оставаться в&nbsp;поддерживающем сообществе."
 	},
 	{
 	  title: "Психологическая помощь<br />и&nbsp;группы поддержки",
-	  imageSrc: "/images/help-cards/card2.jpg",
+	  imageSrc: "/images/help-cards/card2.webp",
 	  statistic1: { number: "9 163", text: "пострадавших<br />получили помощь психологов" },
 	  statistic2: { number: "5", text: "психологов<br />в&nbsp;нашей команде" },
 	  description: "Проводим индивидуальные психологические консультации и ведем группы поддержки&nbsp;— онлайн и&nbsp;очно."
 	},
 	{
 	  title: "Юридическая помощь",
-	  imageSrc: "/images/help-cards/card1.jpg",
-	  statistic1: { number: "В РФ", text: "и&nbsp;за&nbsp;ее&nbsp;пределами<br />онлайн и&nbsp;очно" },
+	  imageSrc: "/images/help-cards/card1.webp",
+	  statistic1: { number: "В России", text: "и&nbsp;за&nbsp;ее&nbsp;пределами" },
 	  statistic2: { number: "2 811", text: "пострадавших<br />получили юридическую помощь" },
 	  description: "Помогаем составить заявление в&nbsp;полицию, жалобу в&nbsp;прокуратуру, консультируем по&nbsp;вопросам развода и&nbsp;алиментов, ограничения родительских прав и&nbsp;так далее."
 	}

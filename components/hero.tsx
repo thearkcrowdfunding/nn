@@ -22,14 +22,14 @@ export function HeroComponent() {
   return (
     <div className="relative h-[700px] md:h-[800px] flex flex-col justify-center items-center p-6 text-white font-sans">
       <Image
-        src="/images/hero/hero-background.jpg"
+        src="/images/hero/hero-background.webp"
         alt="Background"
         fill
         className="object-cover"
         priority
       />
       <div className="absolute inset-0 bg-black opacity-60"></div>
-      <div className="relative z-10 max-w-[800px] w-full mt-16 md:mt-0">
+      <div className="relative z-10 max-w-[800px] w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-left leading-tight">
           ПОМОГИТЕ ЖЕНЩИНАМ, СТРАДАЮЩИМ ОТ{"\u00A0"}ДОМАШНЕГО НАСИЛИЯ
         </h1>
