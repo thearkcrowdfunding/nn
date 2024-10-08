@@ -5,7 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Ebala } from "@/components/ebala"
 
 export function NonprofitNavComponent() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,7 +25,6 @@ export function NonprofitNavComponent() {
   return (
     <>
       <nav className="bg-transparent w-full absolute top-0 z-50">
-      <Ebala />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">

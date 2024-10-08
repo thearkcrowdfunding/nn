@@ -9,7 +9,8 @@ import { testimonials } from '../data/testimonials'
 import { helpCardsData } from '../data/helpCardsData'
 import { DonationForm } from '../components/donation-form-with-cta'
 import { MediaMentionsComponent } from '../components/media-mentions'
-import { FooterComponent } from '../components/footer'  // Changed from Footer to FooterComponent
+import { FooterComponent } from '../components/footer'
+import { Ebala } from '../components/ebala'
 
 export default function Home() {
   console.log('Testimonials:', testimonials);
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)]">
+      <Ebala />
       <div className="relative">
         <NonprofitNavComponent />
         <HeroComponent />
