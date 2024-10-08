@@ -12,7 +12,7 @@ export function StatisticsComponent() {
         </div>
         
         <div className="flex flex-col">
-          <span className="text-4xl md:text-5xl font-bold">XX XXX</span>
+          <span className="text-4xl md:text-5xl font-bold">12 352</span>
           <span className="text-lg md:text-xl">пострадавших<br />получили помощь</span>
         </div>
         
