@@ -5,8 +5,8 @@ import Image from 'next/image';
 export function MediaMentionsComponent() {
   const mediaLogos = [
     { name: 'Time', logo: '/media-logos/time.svg' },
-    { name: 'Медуза', logo: '/media-logos/meduza.svg' },
-    { name: 'Forbes', logo: '/media-logos/forbes.png' },
+    { name: 'Медуза', logo: '/media-logos/meduza.webp' },
+    { name: 'Forbes', logo: '/media-logos/forbes.webp' },
     { name: 'Новая Газета', logo: '/media-logos/novaya-gazeta.svg' },
     { name: 'Коммерсант', logo: '/media-logos/kommersant.svg' },
   ];
