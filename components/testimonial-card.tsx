@@ -43,6 +43,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
             fill
             sizes="(max-width: 800px) 100vw, 800px"
             style={{ objectFit: 'cover' }}
+            quality={75}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
