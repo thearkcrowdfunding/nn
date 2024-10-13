@@ -2,10 +2,12 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { analytics } from '@/utils/analytics'
 
 export function HeroComponent() {
   const handleLearnMoreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    analytics.trackHero('Learn More Click');
     const learnMoreSection = document.getElementById('learn-more');
     if (learnMoreSection) {
       learnMoreSection.scrollIntoView({ behavior: 'smooth' });
@@ -13,6 +15,7 @@ export function HeroComponent() {
   };
 
   const handleDonateClick = () => {
+    analytics.trackHero('Donate Button Click');
     const donateSection = document.getElementById('donate-now');
     if (donateSection) {
       donateSection.scrollIntoView({ behavior: 'smooth' });

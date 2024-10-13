@@ -31,7 +31,7 @@ export default function Home() {
         <TestimonialCard testimonial={testimonials[1]} />
       </div>
       <div id="donate-now" className="max-w-[800px] mx-auto px-6 py-12">
-        <DonationForm />
+        <DonationForm formId="form1" />
       </div>
       <div className="bg-black py-12 px-4 md:px-8">
         <div className="max-w-[800px] mx-auto">
@@ -53,7 +53,7 @@ export default function Home() {
         <div className="p-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: urgentCtaText }}></h2>
         </div>
-        <DonationForm />
+        <DonationForm formId="form2" />
       </div>
       <div className="max-w-[800px] mx-auto px-6 py-6">
         <StatisticsComponent />
@@ -61,7 +61,7 @@ export default function Home() {
       <MediaMentionsComponent />
       </div>
       <div className="max-w-[800px] mx-auto px-6 py-6">
-        <DonationForm />
+        <DonationForm formId="form3" />
       </div>
       <FooterComponent /> 
     </div>

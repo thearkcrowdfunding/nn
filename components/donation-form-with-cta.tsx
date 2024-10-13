@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { analytics } from '@/utils/analytics'
 
 const paymentLinks = {
   "15": "https://buy.stripe.com/9AQ4iQ0sJguNdhe3cf",
@@ -10,15 +11,21 @@ const paymentLinks = {
   "25": "https://buy.stripe.com/aEUeXu4IZfqJ90Y7sw"
 };
 
-export function DonationForm() {
+export function DonationForm({ formId = 'default' }: { formId?: string }) {
   const [amount, setAmount] = useState<string>("20")
 
   const handleAmountClick = (value: string) => {
     setAmount(value)
+    analytics.trackDonationForm('Payment Option Click', value, formId);
   }
 
   const handleDonateClick = () => {
+    analytics.trackDonationForm('Donate Button Click', amount, formId, parseInt(amount));
     window.open(paymentLinks[amount as keyof typeof paymentLinks], "_blank")
+  }
+
+  const handleLegalLinkClick = (linkName: string) => {
+    analytics.trackDonationForm('Legal Link Click', linkName, formId);
   }
 
   return (
@@ -63,11 +70,23 @@ export function DonationForm() {
       
       <p className="text-xs text-center">
         Нажимая кнопку, вы соглашаетесь с{" "}
-        <Link href="https://nasiliu.net/wp-content/uploads/2024/03/oferta-nn_eu.pdf" target="_blank" rel="noopener noreferrer" className="underline">
+        <Link 
+          href="https://nasiliu.net/wp-content/uploads/2024/03/oferta-nn_eu.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="underline"
+          onClick={() => handleLegalLinkClick('оферта')}
+        >
           офертой
         </Link>{" "}
         и{" "}
-        <Link href="https://nasiliu.net/wp-content/uploads/2024/03/politika-konfidenczialnosti-nn_eu.pdf" target="_blank" rel="noopener noreferrer" className="underline">
+        <Link 
+          href="https://nasiliu.net/wp-content/uploads/2024/03/politika-konfidenczialnosti-nn_eu.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="underline"
+          onClick={() => handleLegalLinkClick('обработкой персональных данных')}
+        >
           обработкой персональных данных
         </Link>{" "}
       </p>

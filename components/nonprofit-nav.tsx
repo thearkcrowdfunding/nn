@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { analytics } from '@/utils/analytics';
 
 export function NonprofitNavComponent() {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,11 +16,21 @@ export function NonprofitNavComponent() {
     { name: "Отчеты", href: "https://nasiliu.net/report/" },
   ]
 
+  const handleMenuItemClick = (itemName: string) => {
+    analytics.trackNavigation('Menu Item Click', itemName);
+  };
+
   const handleDonateClick = () => {
+    analytics.trackNavigation('Donate Button Click', 'Header');
     const donateSection = document.getElementById('donate-now');
     if (donateSection) {
       donateSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleBurgerMenuClick = () => {
+    analytics.trackNavigation('Burger Menu Toggle', isOpen ? 'Close' : 'Open');
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -46,6 +57,9 @@ export function NonprofitNavComponent() {
                   key={item.name}
                   href={item.href}
                   className="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleMenuItemClick(item.name)}
                 >
                   {item.name}
                 </Link>
@@ -59,7 +73,7 @@ export function NonprofitNavComponent() {
                 Помочь
               </button>
               <div className="md:hidden">
-                <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="text-white">
+                <Button variant="ghost" size="icon" onClick={handleBurgerMenuClick} className="text-white">
                   {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                   <span className="sr-only">Open main menu</span>
                 </Button>
@@ -76,6 +90,8 @@ export function NonprofitNavComponent() {
                   href={item.href}
                   className="text-black hover:text-gray-700 block px-3 py-2 rounded-md text-base font-medium"
                   onClick={() => setIsOpen(false)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {item.name}
                 </Link>
