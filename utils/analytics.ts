@@ -1,14 +1,23 @@
-type EventParams = Record<string, string | number | boolean>;
-
-class Analytics {
-  private pushToDataLayer(event: string, params: EventParams) {
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event,
-        ...params,
-      });
-    }
+declare global {
+	interface Window {
+		dataLayer: Array<{
+			event: string;
+			[key: string]: string | number | boolean | undefined;
+		  }>;
+	}
   }
+  
+  type EventParams = Record<string, string | number | boolean>;
+
+  class Analytics {
+	private pushToDataLayer(event: string, params: EventParams) {
+	  if (typeof window !== 'undefined' && window.dataLayer) {
+		window.dataLayer.push({
+		  event,
+		  ...params,
+		});
+	  }
+	}
 
   trackEvent(category: string, action: string, label?: string, value?: number, additionalParams?: EventParams) {
     this.pushToDataLayer('custom_event', {
