@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Насилию.нет | Помогите женщинам, страдающим от домашнего насилия",
   description: "Сотни тысяч женщин подвергаются насилию в России. Помогите им — без вас они не справятся.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

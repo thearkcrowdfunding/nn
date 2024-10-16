@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Team() {
   const teamMembers = [
-    { name: 'Анна Ривина', role: 'основательница Центра «Насилию.нет»', image: '/images/team/anna_rivina_09-282x282.webp' },
+    { name: 'Анна Ривина', role: 'основательница Центра «Насилию.нет»', image: '/images/team/rivina.jpg' },
     { name: 'Татьяна Калинина', role: 'руководительница волонтерского направления', image: '/images/team/tania.jpg' },
     { name: 'Виктория Одиссонова', role: 'руководительница PR в Центре «Насилию.нет»', image: '/images/team/vika.jpg' },
   ];
