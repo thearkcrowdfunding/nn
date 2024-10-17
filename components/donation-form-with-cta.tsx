@@ -5,26 +5,53 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { analytics } from '@/utils/analytics'
 
-const paymentLinks = {
+const paymentLinks: { [key: string]: string } = {
   "15": "https://buy.stripe.com/9AQ4iQ0sJguNdhe3cf",
   "20": "https://buy.stripe.com/8wMaHe6R7bat5OM6oq",
   "25": "https://buy.stripe.com/aEUeXu4IZfqJ90Y7sw"
 };
 
+/**
+ * DonationForm component allows users to select an amount and donate.
+ * @param formId - An optional identifier for the form.
+ */
 export function DonationForm({ formId = 'default' }: { formId?: string }) {
   const [amount, setAmount] = useState<string>("20")
 
+  /**
+   * Handles click events on amount buttons.
+   * @param value - The selected donation amount as a string.
+   */
   const handleAmountClick = (value: string) => {
     setAmount(value)
-    analytics.trackDonationForm('Payment Option Click', value, formId);
+    analytics.trackDonationForm('Payment Option Click', `$${value}`, formId);
   }
 
+  /**
+   * Handles the donate button click, tracking the donation and opening the payment link.
+   */
   const handleDonateClick = () => {
-    const numericAmount = parseInt(amount);
-    analytics.trackDonationForm('Donate Button Click', amount, formId, numericAmount);
-    window.open(paymentLinks[amount as keyof typeof paymentLinks], "_blank")
+    const numericAmount = parseInt(amount, 10);
+
+    // Ensure numericAmount is a valid number before tracking
+    if (!isNaN(numericAmount) && numericAmount > 0) {
+      analytics.trackDonationForm('Donate Button Click', `$${amount}`, formId, numericAmount);
+    } else {
+      console.error('Invalid donation amount:', amount);
+    }
+
+    const paymentLink = paymentLinks[amount];
+    if (paymentLink) {
+      window.open(paymentLink, "_blank");
+    } else {
+      console.error('Invalid payment link for amount:', amount);
+    }
   }
 
+  /**
+   * Handles clicks on legal links within the form.
+   * @param linkName - The name of the link clicked.
+   */
   const handleLegalLinkClick = (linkName: string) => {
     analytics.trackDonationForm('Legal Link Click', linkName, formId);
   }
