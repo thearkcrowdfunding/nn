@@ -33,7 +33,6 @@ export function DonationForm({ formId = 'default' }: { formId?: string }) {
   const handleDonateClick = () => {
     const numericAmount = parseInt(amount, 10);
 
-    // Ensure numericAmount is a valid number before tracking
     if (!isNaN(numericAmount) && numericAmount > 0) {
       analytics.trackDonationForm('Donate Button Click', `$${amount}`, formId, numericAmount);
     } else {
@@ -42,7 +41,8 @@ export function DonationForm({ formId = 'default' }: { formId?: string }) {
 
     const paymentLink = paymentLinks[amount];
     if (paymentLink) {
-      window.open(paymentLink, "_blank");
+      // Change this line to open in the same tab
+      window.location.href = paymentLink;
     } else {
       console.error('Invalid payment link for amount:', amount);
     }
@@ -94,19 +94,6 @@ export function DonationForm({ formId = 'default' }: { formId?: string }) {
       
       <p className="text-base mb-8 text-center">
         Без вашей помощи они не{"\u00A0"}справятся. Даже 20$ могут спасти чью-то жизнь.
-      </p>
-      
-      <p className="text-sm mb-3 text-center">
-        Эта форма не принимает карты из России. Поддержать с российской карты можно{" "}
-        <Link 
-          href="https://nasiliu.net/podderzhat/#rus" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="underline"
-          onClick={() => handleLegalLinkClick('Russian donation link')}
-        >
-          здесь.
-        </Link>
       </p>
       
       <p className="text-sm text-center">
