@@ -9,11 +9,29 @@ declare global {
   
 type EventParams = Record<string, string | number | boolean>;
 
+type PaymentMethod = 'foreign' | 'russian' | 'paypal';
+type Currency = 'USD' | 'RUB';
+
+interface DonationParams {
+  action: string;
+  label: string;
+  formId: string;
+  donationAmount?: number;
+  paymentMethod?: PaymentMethod;
+  currency?: Currency;
+}
+
 class Analytics {
+  private getPageTitle(): string {
+    if (typeof window === 'undefined') return '';
+    return 'Насилию.нет | Помогите женщинам, страдающим от домашнего насилия';
+  }
+
   private pushToDataLayer(event: string, params: EventParams) {
     if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
         event,
+        page_title: this.getPageTitle(),
         ...params,
       });
     }
@@ -72,7 +90,11 @@ class Analytics {
    * @param action - The action performed.
    */
   trackHero(action: string) {
-    this.trackEvent('Hero', action);
+    const eventAction = action === 'Donate Button Click' 
+      ? 'Donation Form Navigation' 
+      : action;
+    
+    this.trackEvent('Hero', eventAction);
   }
 
   /**
@@ -82,27 +104,33 @@ class Analytics {
    * @param formId - Identifier of the form.
    * @param donationAmount - The numeric value of the donation amount.
    */
-  trackDonationForm(
-    action: string,
-    label: string,
-    formId: string,
-    donationAmount?: number
-  ) {
-    const value =
-      typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0
-        ? donationAmount
-        : undefined;
+  trackDonationForm({
+    action,
+    label,
+    formId,
+    donationAmount,
+    paymentMethod,
+    currency
+  }: DonationParams) {
+    const eventAction = action === 'Donate Button Click'
+      ? 'Donation Initiate'
+      : action;
+
+    const value = typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0
+      ? donationAmount
+      : undefined;
 
     const additionalParams: EventParams = {
-      formId,
+      form_id: formId,
+      ...(paymentMethod && { payment_method: paymentMethod }),
+      ...(currency && { currency: currency }),
     };
 
-    // Include donation_amount only if it is a valid number
     if (typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0) {
       additionalParams.donation_amount = donationAmount;
     }
 
-    this.trackEvent('Donation Form', action, label, value, additionalParams);
+    this.trackEvent('Donation Form', eventAction, label, value, additionalParams);
   }
 
   /**
@@ -128,7 +156,10 @@ class Analytics {
    * @param formId - The identifier of the form.
    */
   trackDonation(amount: number, formId: string) {
-    this.pushToDataLayer('donation', { donation_amount: amount, formId });
+    this.pushToDataLayer('donation', { 
+      donation_amount: amount, 
+      form_id: formId 
+    });
   }
 }
 

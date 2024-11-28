@@ -31,27 +31,37 @@ export function DonationForm({ formId = 'default' }: DonationFormProps) {
   const handleCardTypeChange = (type: CardType) => {
     setCardType(type)
     setAmount(type === 'foreign' ? "20" : "1000")
-    analytics.trackDonationForm('Card Type Change', type, formId);
+    analytics.trackDonationForm({
+      action: 'Card Type Change',
+      label: type,
+      formId,
+      paymentMethod: type,
+      currency: type === 'foreign' ? 'USD' : 'RUB'
+    });
   }
 
   const handleAmountClick = (value: string) => {
     setAmount(value)
-    analytics.trackDonationForm(
-      'Payment Option Click', 
-      cardType === 'foreign' ? `$${value}` : `${value}₽`, 
-      formId
-    );
+    analytics.trackDonationForm({
+      action: 'Payment Option Click',
+      label: cardType === 'foreign' ? `$${value}` : `${value}₽`,
+      formId,
+      paymentMethod: cardType,
+      currency: cardType === 'foreign' ? 'USD' : 'RUB'
+    });
   }
 
   const handleDonateClick = () => {
     const numericAmount = parseInt(amount, 10);
     if (!isNaN(numericAmount) && numericAmount > 0) {
-      analytics.trackDonationForm(
-        'Donate Button Click', 
-        cardType === 'foreign' ? `$${amount}` : `${amount}₽`, 
-        formId, 
-        numericAmount
-      );
+      analytics.trackDonationForm({
+        action: 'Donate Button Click',
+        label: cardType === 'foreign' ? `$${amount}` : `${amount}₽`,
+        formId,
+        donationAmount: numericAmount,
+        paymentMethod: cardType,
+        currency: cardType === 'foreign' ? 'USD' : 'RUB'
+      });
 
       const paymentLink = paymentLinks[cardType][amount as keyof typeof paymentLinks[typeof cardType]];
       if (paymentLink) {
@@ -63,7 +73,13 @@ export function DonationForm({ formId = 'default' }: DonationFormProps) {
   }
 
   const handleLegalLinkClick = (linkName: string) => {
-    analytics.trackDonationForm('Legal Link Click', linkName, formId);
+    analytics.trackDonationForm({
+      action: 'Legal Link Click',
+      label: linkName,
+      formId,
+      paymentMethod: cardType,
+      currency: cardType === 'foreign' ? 'USD' : 'RUB'
+    });
   }
 
   const currentAmounts = Object.keys(paymentLinks[cardType]);
