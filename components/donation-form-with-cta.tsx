@@ -86,11 +86,11 @@ export function DonationForm({ formId = 'default' }: DonationFormProps) {
 
   return (
     <div className="bg-white rounded-lg p-4 border-4 border-red-500 w-full">
-      <h3 className="text-3xl md:text-3xl font-bold mb-4 text-left">
+      <h3 className="text-3xl md:text-3xl font-bold mb-4 text-center">
         <span className="text-red-500">ПОМОГИТЕ ЖЕНЩИНАМ,</span><br />
         <span className="text-black">СТРАДАЮЩИМ ОТ{"\u00A0"}ДОМАШНЕГО НАСИЛИЯ</span>
       </h3>
-      <p className="text-base mb-6 text-left">
+      <p className="text-base mb-6 text-center">
         Получить <strong>экстренное убежище, психологическую помощь, комплексное сопровождение</strong> и{"\u00A0"}вырваться из{"\u00A0"}замкнутого круга
       </p>
       
