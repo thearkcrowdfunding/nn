@@ -35,15 +35,18 @@ export default function Home() {
       </div>
       <div className="bg-red-500 py-12 px-4 md:px-8">
         <div className="max-w-[800px] mx-auto">
-        <div className="p-4"><h2 className="text-4xl md:text-5xl font-bold text-white text-left mb-8 uppercase">
-            Насилию.нет 6{"\u00A0"}лет помогает женщинам
-          </h2>
-        </div>
-          <div className="flex flex-col gap-16 items-center"> {/* Increased gap */}
+          <div className="p-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white text-left mb-8 uppercase">
+              Насилию.нет 6{"\u00A0"}лет помогает женщинам
+            </h2>
+          </div>
+          <div className="flex flex-col gap-16 items-center">
             <HelpCardComponent {...helpCardsData[1]} />
             <HelpCardComponent {...helpCardsData[0]} />
-            <h2 className="text-3xl md:text-4xl text-white font-bold mb-6 text-left" dangerouslySetInnerHTML={{ __html: urgentCtaText }}></h2>
-            <DonationForm formId="form2" />
+            <div className="w-full">
+              <h2 className="text-3xl md:text-4xl text-white font-bold mb-4 text-left" dangerouslySetInnerHTML={{ __html: urgentCtaText }}></h2>
+              <DonationForm formId="form2" noBorder />
+            </div>
             <HelpCardComponent {...helpCardsData[2]} />
             <TestimonialCard testimonial={testimonials[2]} />
             <HelpCardComponent {...helpCardsData[3]} />

@@ -12,7 +12,7 @@ export function CtaComponent() {
           <p className="text-base md:text-lg mb-4">
             <strong>995{"\u00A0"}женщин</strong> были убиты только в{"\u00A0"}2021—2022 году.<br />
             <strong>14{"\u00A0"}964</strong> — получили увечья.<br />
-            <strong>Гораздо больше</strong> — подверглись избиениям и{"\u00A0"}сексуальному насилию.<br />
+            <strong>Гораздо больше</strong> — подверглись избиениям и{"\u00A0"}сексуализированному насилию.<br />
             И{"\u00A0"}ситуация становится только хуже.
           </p>
           <p className="text-base md:text-lg mb-4">

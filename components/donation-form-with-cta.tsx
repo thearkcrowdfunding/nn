@@ -22,9 +22,10 @@ const paymentLinks = {
 
 interface DonationFormProps {
   formId?: string;
+  noBorder?: boolean;
 }
 
-export function DonationForm({ formId = 'default' }: DonationFormProps) {
+export function DonationForm({ formId = 'default', noBorder = false }: DonationFormProps) {
   const [cardType, setCardType] = useState<CardType>('foreign')
   const [amount, setAmount] = useState<string>(cardType === 'foreign' ? "20" : "1000")
 
@@ -85,7 +86,7 @@ export function DonationForm({ formId = 'default' }: DonationFormProps) {
   const currentAmounts = Object.keys(paymentLinks[cardType]);
 
   return (
-    <div className="bg-white rounded-lg p-4 border-4 border-red-500 w-full">
+    <div className={`bg-white rounded-lg p-4 w-full ${!noBorder ? 'border-4 border-red-500' : ''}`}>
       <h3 className="text-3xl md:text-3xl font-bold mb-4 text-center">
         <span className="text-red-500">ПОМОГИТЕ ЖЕНЩИНАМ,</span><br />
         <span className="text-black">СТРАДАЮЩИМ ОТ{"\u00A0"}ДОМАШНЕГО НАСИЛИЯ</span>
