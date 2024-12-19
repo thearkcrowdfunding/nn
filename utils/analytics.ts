@@ -4,12 +4,16 @@ declare global {
 			event: string;
 			[key: string]: string | number | boolean;
 		  }>;
+		analyticsQueue: Array<{
+			event: string;
+			params: Record<string, string | number | boolean>;
+		}>;
 	}
   }
   
 type EventParams = Record<string, string | number | boolean>;
 
-type PaymentMethod = 'foreign' | 'russian' | 'paypal';
+type PaymentMethod = 'foreign' | 'russian';
 type Currency = 'USD' | 'RUB';
 
 interface DonationParams {
@@ -19,31 +23,75 @@ interface DonationParams {
   donationAmount?: number;
   paymentMethod?: PaymentMethod;
   currency?: Currency;
+  timestamp?: string;
 }
 
 class Analytics {
+  private queue: Array<{ event: string; params: EventParams }> = [];
+  private isInitialized = false;
+  private maxRetries = 3;
+  private retryDelay = 1000;
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      window.analyticsQueue = this.queue;
+      this.initializeWhenReady();
+    }
+  }
+
+  private initializeWhenReady() {
+    if (document.readyState === 'complete') {
+      this.processQueue();
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(() => this.processQueue(), 2000);
+      });
+    }
+  }
+
+  private processQueue() {
+    this.isInitialized = true;
+    while (this.queue.length > 0) {
+      const item = this.queue.shift();
+      if (item) {
+        this.pushToDataLayer(item.event, item.params);
+      }
+    }
+  }
+
   private getPageTitle(): string {
     if (typeof window === 'undefined') return '';
     return 'Насилию.нет | Помогите женщинам, страдающим от домашнего насилия';
   }
 
-  private pushToDataLayer(event: string, params: EventParams) {
-    if (typeof window !== 'undefined' && window.dataLayer) {
+  private pushToDataLayer(event: string, params: EventParams, retryCount = 0) {
+    if (!this.isInitialized) {
+      this.queue.push({ event, params });
+      return;
+    }
+
+    if (typeof window === 'undefined' || !window.dataLayer) {
+      return;
+    }
+
+    try {
       window.dataLayer.push({
         event,
         page_title: this.getPageTitle(),
         ...params,
       });
+    } catch (error) {
+      console.warn(`Analytics push failed:`, error);
+      if (retryCount < this.maxRetries) {
+        setTimeout(() => {
+          this.pushToDataLayer(event, params, retryCount + 1);
+        }, this.retryDelay * Math.pow(2, retryCount));
+      }
     }
   }
 
   /**
    * Tracks a custom event by pushing it to the dataLayer.
-   * @param category - The event category (e.g., 'Donation Form').
-   * @param action - The event action (e.g., 'Donate Button Click').
-   * @param label - Optional event label (e.g., '$20').
-   * @param value - Optional event value (e.g., 20).
-   * @param additionalParams - Additional parameters to include.
    */
   trackEvent(
     category: string,
@@ -52,34 +100,33 @@ class Analytics {
     value?: number,
     additionalParams?: EventParams
   ) {
-    const eventParams: EventParams = {
-      event_category: category,
-      event_action: action,
-      event_label: label ?? '',
-    };
+    try {
+      const eventParams: EventParams = {
+        event_category: category,
+        event_action: action,
+        event_label: label ?? '',
+      };
 
-    // Include event_value only if it is a valid positive number
-    if (typeof value === 'number' && !isNaN(value) && value > 0) {
-      eventParams.event_value = value;
-    }
-
-    // Merge additionalParams, ensuring no undefined values are introduced
-    if (additionalParams) {
-      for (const key in additionalParams) {
-        const paramValue = additionalParams[key];
-        if (paramValue !== undefined) {
-          eventParams[key] = paramValue;
-        }
+      if (typeof value === 'number' && !isNaN(value) && value > 0) {
+        eventParams.event_value = value;
       }
-    }
 
-    this.pushToDataLayer('custom_event', eventParams);
+      if (additionalParams) {
+        Object.entries(additionalParams).forEach(([key, value]) => {
+          if (value !== undefined) {
+            eventParams[key] = value;
+          }
+        });
+      }
+
+      this.pushToDataLayer('custom_event', eventParams);
+    } catch (error) {
+      console.warn('Failed to track event:', { category, action, error });
+    }
   }
 
   /**
    * Tracks navigation events.
-   * @param action - The navigation action.
-   * @param label - The label for the action.
    */
   trackNavigation(action: string, label: string) {
     this.trackEvent('Navigation', action, label);
@@ -87,9 +134,9 @@ class Analytics {
 
   /**
    * Tracks interactions with the hero section.
-   * @param action - The action performed.
    */
   trackHero(action: string) {
+    // Clearly distinguish navigation events from donation events
     const eventAction = action === 'Donate Button Click' 
       ? 'Donation Form Navigation' 
       : action;
@@ -99,10 +146,6 @@ class Analytics {
 
   /**
    * Tracks interactions with the donation form.
-   * @param action - The action performed (e.g., 'Donate Button Click').
-   * @param label - The label for the event (e.g., selected amount).
-   * @param formId - Identifier of the form.
-   * @param donationAmount - The numeric value of the donation amount.
    */
   trackDonationForm({
     action,
@@ -112,31 +155,81 @@ class Analytics {
     paymentMethod,
     currency
   }: DonationParams) {
-    const eventAction = action === 'Donate Button Click'
-      ? 'Donation Initiate'
-      : action;
+    try {
+      // Distinguish between different donation form events
+      const eventAction = action === 'Donate Button Click'
+        ? 'Donation Initiate'
+        : action;
 
-    const value = typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0
-      ? donationAmount
-      : undefined;
+      const value = typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0
+        ? donationAmount
+        : undefined;
 
-    const additionalParams: EventParams = {
+      const additionalParams: EventParams = {
+        form_id: formId,
+        ...(paymentMethod && { payment_method: paymentMethod }),
+        ...(currency && { currency: currency }),
+        ...(value && { donation_amount: value }),
+      };
+
+      this.trackEvent('Donation Form', eventAction, label, value, additionalParams);
+    } catch (error) {
+      console.warn('Failed to track donation form event:', error);
+    }
+  }
+
+  /**
+   * Tracks donation initiation specifically
+   */
+  trackDonationInitiation(params: DonationParams) {
+    const {
+      label,
+      formId,
+      donationAmount,
+      paymentMethod,
+      currency
+    } = params;
+
+    const eventParams: EventParams = {
       form_id: formId,
+      event_timestamp: this.getUTCTimestamp(),
       ...(paymentMethod && { payment_method: paymentMethod }),
       ...(currency && { currency: currency }),
     };
 
     if (typeof donationAmount === 'number' && !isNaN(donationAmount) && donationAmount > 0) {
-      additionalParams.donation_amount = donationAmount;
+      eventParams.donation_amount = donationAmount;
     }
 
-    this.trackEvent('Donation Form', eventAction, label, value, additionalParams);
+    this.trackEvent('Donation Form', 'Donation Initiate', label, donationAmount, eventParams);
+  }
+
+  /**
+   * Tracks successful donations
+   */
+  trackDonationSuccess(amount: number, formId: string, paymentMethod: PaymentMethod) {
+    try {
+      const eventParams: EventParams = {
+        form_id: formId,
+        payment_method: paymentMethod,
+        donation_amount: amount,
+        currency: paymentMethod === 'foreign' ? 'USD' : 'RUB'
+      };
+
+      this.trackEvent(
+        'Donation Form',
+        'Donation Success',
+        paymentMethod,
+        amount,
+        eventParams
+      );
+    } catch (error) {
+      console.warn('Failed to track donation success:', error);
+    }
   }
 
   /**
    * Tracks footer interactions.
-   * @param action - The action performed.
-   * @param label - The label for the event.
    */
   trackFooter(action: string, label: string) {
     this.trackEvent('Footer', action, label);
@@ -144,22 +237,13 @@ class Analytics {
 
   /**
    * Tracks virtual page views.
-   * @param path - The path of the page.
    */
   trackPageView(path: string) {
     this.pushToDataLayer('virtual_page_view', { page_path: path });
   }
 
-  /**
-   * Tracks successful donations.
-   * @param amount - The donation amount.
-   * @param formId - The identifier of the form.
-   */
-  trackDonation(amount: number, formId: string) {
-    this.pushToDataLayer('donation', { 
-      donation_amount: amount, 
-      form_id: formId 
-    });
+  private getUTCTimestamp(): string {
+    return new Date().toISOString();
   }
 }
 

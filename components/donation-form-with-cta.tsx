@@ -55,7 +55,7 @@ export function DonationForm({ formId = 'default', noBorder = false }: DonationF
   const handleDonateClick = () => {
     const numericAmount = parseInt(amount, 10);
     if (!isNaN(numericAmount) && numericAmount > 0) {
-      analytics.trackDonationForm({
+      analytics.trackDonationInitiation({
         action: 'Donate Button Click',
         label: cardType === 'foreign' ? `$${amount}` : `${amount}₽`,
         formId,
