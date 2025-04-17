@@ -16,6 +16,7 @@ const oneTimePaymentLinks = {
   },
 
   // Russian cards for One Time Donations are not supported
+  // Init for Vercel
   russian: {
     "500": "",
     "1000": "",
