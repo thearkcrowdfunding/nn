@@ -39,10 +39,13 @@ export function NonprofitNavComponent() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-white">
-                <div style={{ width: '120px', height: '40px', position: 'relative' }}>
+              <Link href="/" className="text-xl font-bold text-black">
+                <div style={{
+                  width: '29px',
+                  height: '40px', position: 'relative'
+                }}>
                   <Image
-                    src="/logo-new.svg"
+                    src="/nn-small-logo.svg"
                     alt="Насилию.нет"
                     fill
                     style={{ objectFit: 'contain' }}
@@ -56,7 +59,7 @@ export function NonprofitNavComponent() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-black hover:text-gray-400 px-3 py-2 rounded-md text-sm font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => handleMenuItemClick(item.name)}
@@ -66,7 +69,7 @@ export function NonprofitNavComponent() {
               ))}
             </div>
             <div className="flex items-center space-x-4">
-              <button 
+              <button
                 onClick={handleDonateClick}
                 className="hidden md:block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 text-base md:text-lg cursor-pointer"
               >
